@@ -2,10 +2,10 @@ const { Command, Argument } = require('discord-akairo')
 const dmd = require('discord-md-tags')
 const emojis = require('../../utils/emojis.json')
 
-module.exports = class Unload extends Command {
+module.exports = class Reloadall extends Command {
     constructor() {
-        super('unload', {
-            aliases: ['unload'],
+        super('reloadall', {
+            aliases: ['reloadall'],
             ownerOnly: true,
             typing: true,
             clientPermissions: ['SEND_MESSAGES', 'ADD_REACTIONS', 'USE_EXTERNAL_EMOJIS'],

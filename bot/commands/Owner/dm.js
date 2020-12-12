@@ -1,6 +1,6 @@
 const { Command } = require('discord-akairo')
 
-export default class DM extends Command{
+module.exports = class DM extends Command{
     constructor() {
         super("dm", {
             aliases: ["dm"],

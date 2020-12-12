@@ -25,7 +25,7 @@ module.exports = class Eval extends Command {
             ]
         })
     }
-    exec(message, { code }) {
+    async exec(message, { code }) {
         
         try {
             let t1 = new Date()
