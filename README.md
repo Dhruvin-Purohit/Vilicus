@@ -1,6 +1,4 @@
-# This repository has been archived due to our host not supporting ts no further updates will be given
-
-# **Decent Bot** is a Preeminent discord bot with a considerable amount of features.
+# **Vilicus** is a Preeminent discord bot with a considerable amount of features.
 <p align="center">
   <a href="https://github.com/Dhruvin-Purohit/The-Overseer/blob/master/LICENSE" target="blank">
   <img src="https://img.shields.io/github/license/Dhruvin-Purohit/The-Overseer?style=for-the-badge&color="success"" alt="License">
