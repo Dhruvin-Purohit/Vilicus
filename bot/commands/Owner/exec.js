@@ -9,7 +9,6 @@ module.exports = class Exec extends Command{
             aliases: ["exec", "sh", "bash", "execute", "cmd", "powershell"],
             editable: false,
             typing: true,
-            category: "owner",
             clientPermissions: ["SEND_MESSAGES", "EMBED_LINKS", "ADD_REACTIONS", 'USE_EXTERNAL_EMOJIS'],
             description: {
                 content: "Execute stuff directly onto the terminal",

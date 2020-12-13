@@ -1,6 +1,5 @@
 const { Listener } = require('discord-akairo')
-const { MessageEmbed } = require('discord.js')
-
+const dmd = require('discord-md-tags')
 module.exports = class Message extends Listener {
     constructor() {
         super('message', {
@@ -11,11 +10,8 @@ module.exports = class Message extends Listener {
     }
     exec(message) {
         if(!message.author.bot && message.content === `<@${this.client.user?.id}>` || message.content === `<@!${this.client.user?.id}>`) {
-            const myprefix = new MessageEmbed()
-            .setTitle(`My prefix for this server is \`${this.client.CommandHandler.prefix}\``)
-            .setFooter(`You can do ${this.client.CommandHandler.prefix}help for more help`)
             try {
-                message.channel.send(myprefix)
+                message.channel.send(dmd.bold `My prefix is \`${this.client.CommandHandler.prefix}\``)
             } catch {
                 //HaHaMiSsInG PeRmIsSiOnS
             }

@@ -6,7 +6,6 @@ module.exports = class DM extends Command{
             aliases: ["dm"],
             editable: false,
             typing: true,
-            category: "owner",
             clientPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
             description: {
                 content: "Send DM to a user...",
@@ -51,8 +50,12 @@ module.exports = class DM extends Command{
             .catch(() => resolve(false))
         })
         if (await confirmation) {
-        await message.client.users.cache.get(user.id)?.send(msg)
-        return message.channel.send("Done👍🏻")
+            try {
+                await message.client.users.cache.get(user.id)?.send(msg)
+                return message.channel.send("Done👍🏻")
+            } catch {
+                return message.channel.send(`Couldn't send dm👎🏻`)
+            }
         }
         else {
             return message.channel.send("I was pretty sure you were going to cancel")
