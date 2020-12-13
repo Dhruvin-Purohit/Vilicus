@@ -51,10 +51,26 @@
         "Settings": "<:Settings:785789351254294538>",
         "Social": "<:Social:785789351262552074>",
         "Voice_Channel_Private": "<:Voice_Channel_Private:785789351501758474>",
-        "See": "<:See:785789351522729994>"
+        "See": "<:See:785789351522729994>",
+        "Attachment": "<:Attachment:787713436393013248>"
     },
     "other": {
         "join": "<:join:784391624889073694>",
         "leave": "<:leave:784391764034977862>"
+    },
+    "old": {
+        "Empty": "<:Empty:757996252343435365>",
+        "Early_verified_developer": "<:Early_verified_developer:762885232293969920>",
+        "Server_Owner": "<:Server_Owner:762885241232424960>",
+        "Hypesquad_Events": "<:Hypesquad_Events:762885249281294368>",
+        "Hypesquad_Bravery": "<:Hypesquad_Bravery:762885250765553704>",
+        "Hypesquad_Brilliance": "<:Hypesquad_Brilliance:762885252192272414>",
+        "Hypesquad_Balance": "<:Hypesquad_Balance:762885253496176650>",
+        "Bughunter_level_1": "<:Bughunter_level_1:762885422233681950>",
+        "Bughunter_level_2": "<:Bughunter_level_2:762885423457894411>",
+        "Discord_employee": "<:Discord_employee:762885426666537040>",
+        "Early_supporter": "<:Early_supporter:762885431070425088>",
+        "Discord_partner": "<:Discord_partner:763611401117237291>",
+        "Team_user": "<:Team_user:787710652894150677>"
     }
 }

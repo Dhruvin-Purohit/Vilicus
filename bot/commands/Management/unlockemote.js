@@ -8,7 +8,6 @@ module.exports = class UnlockEmote extends Command{
             editable: false,
             typing: true,
             channel: "guild",
-            category: "management",
             clientPermissions: ["SEND_MESSAGES", "EMBED_LINKS", "MANAGE_EMOJIS", "MANAGE_CHANNELS"],
             userPermissions: ["MANAGE_EMOJIS", "MANAGE_ROLES"],
             description: {
