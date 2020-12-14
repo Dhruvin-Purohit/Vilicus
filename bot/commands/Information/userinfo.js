@@ -43,6 +43,7 @@ module.exports = class Userinfo extends Command {
         let now = new Date()
         let joined = member.joinedAt || now
         let created = user.createdAt || now
+        let premiumsince = member.premiumSince
         let flags = (await user.fetchFlags()).toArray()
         let highest_role
 
@@ -50,7 +51,7 @@ module.exports = class Userinfo extends Command {
         else highest_role = member.roles.highest
 
         const embed = new MessageEmbed()
-        .addField(`${user.tag}`, `${emojis.discord.ID}ID: ${dmd.code `${user.id}`}\n${emojis.discord.Attachment}Avatar: [Click Here](${user.displayAvatarURL({dynamic: true, size: 4096})} "Avatar Link")\n${emojis.discord.Calendar}Joined At: ${dmd.code `${joined.getDate()}-${joined.getMonth()}-${joined.getFullYear()}`}\n${emojis.discord.Calendar}Joined At: ${dmd.code `${joined.getDate()}-${joined.getMonth()}-${joined.getFullYear()}`}\n${emojis.discord.Calendar}Created At: ${dmd.code `${created.getDate()}-${created.getMonth()}-${created.getFullYear()}`}\n${emojis.discord.Boost}Booster: ${member.premiumSince ? `\`Yes\`\n${emojis.discord.Boost}Boosting Since: \`${member.premiumSince}\`` : "`No`"}${highest_role ? `\n${emojis.discord.Role}Highest Role: ${highest_role}\n${emojis.discord.ID}└ID: ${dmd.code `${highest_role.id}`}\n${emojis.old.Empty}└Color: ${dmd.code `${highest_role.hexColor}`}\n${emojis.old.Empty}└Position: ${dmd.code `${highest_role.position}`}` : ""}\n${emojis.old.Empty}Display Color: ${dmd.code `${member.displayHexColor}`}`)
+        .addField(`${user.tag}`, `${emojis.discord.ID}ID: ${dmd.code `${user.id}`}\n${emojis.discord.Attachment}Avatar: [Click Here](${user.displayAvatarURL({dynamic: true, size: 4096})} "Avatar Link")\n${emojis.discord.Calendar}Joined At: ${dmd.code `${joined.getDate()}-${joined.getMonth()}-${joined.getFullYear()}`}\n${emojis.discord.Calendar}Created At: ${dmd.code `${created.getDate()}-${created.getMonth()}-${created.getFullYear()}`}\n${emojis.discord.Boost}Booster: ${member.premiumSince ? `\`Yes\`\n${emojis.old.Empty}└${emojis.discord.Boost}Since: ${dmd.code `${premiumsince.getDate()}-${premiumsince.getMonth()}-${premiumsince.getFullYear()}`}` : "`No`"}${highest_role ? `\n${emojis.discord.Role}Highest Role: ${highest_role}\n${emojis.old.Empty}└${emojis.discord.ID}ID: ${dmd.code `${highest_role.id}`}\n${emojis.old.Empty}└${emojis.old.Color}Color: ${dmd.code `${highest_role.hexColor}`}\n${emojis.old.Empty}└${emojis.old.Position}Position: ${dmd.code `${highest_role.position}`}` : ""}${member.roles.color ? `\n${emojis.old.Color}Color Role: ${member.roles.color}\n${emojis.old.Empty}└${emojis.discord.Text_Channel}Color Hex: ${dmd.code `${member.displayHexColor}`}` : ``}`)
         if(flags) embed.addField(`Badges:`, flags.map(f => flags_map[f]).join(`\n`))
         embed.setColor(member.displayHexColor)
         .setThumbnail(user.displayAvatarURL({dynamic: true, size: 4096}))
