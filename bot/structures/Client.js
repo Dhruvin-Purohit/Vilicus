@@ -44,6 +44,8 @@ class VilicusClient extends ak.AkairoClient {
 
         this.fn = require('../utils/functions')
 
+        this.basecolor = config.bot.basecolor
+
     }
 
     async _init() {
