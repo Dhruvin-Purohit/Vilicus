@@ -16,7 +16,11 @@ module.exports = class WithoutRole extends Command {
                         start: 'What role?'
                     }
                 }
-            ]
+            ],
+            description: {
+                "content": "Lists all members without a given role",
+                "usage": "< Role >"
+            }
         })
     }
     async exec(message, { role }) {

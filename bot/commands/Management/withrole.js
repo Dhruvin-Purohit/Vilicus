@@ -16,7 +16,11 @@ module.exports = class WithRole extends Command {
                         start: 'What role?'
                     }
                 }
-            ]
+            ],
+            description: {
+                "content": "Lists all members with a given role",
+                "usage": "< Role >"
+            }
         })
     }
     async exec(message, { role }) {
