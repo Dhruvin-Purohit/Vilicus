@@ -9,7 +9,8 @@ src
 
 test.js
 src
-#blacklist.json
+blacklist.json
+cache
 
 ## just for intellij to work
 jsconfig.json
