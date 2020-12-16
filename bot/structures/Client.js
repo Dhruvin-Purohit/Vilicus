@@ -73,6 +73,7 @@ class VilicusClient extends ak.AkairoClient {
         this.ListenerHandler.setEmitters({
             CommandHandler: this.CommandHandler,
             ListenerHandler: this.ListenerHandler,
+            InhibitorHandler: this.InihibitorHandler,
             process
         })
         this.CommandHandler.loadAll()
