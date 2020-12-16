@@ -18,6 +18,7 @@ module.exports = class Reloadall extends Command {
         try{
             await this.client.CommandHandler.reloadAll()
             await this.client.ListenerHandler.reloadAll()
+            await this.client.InhibitorHandler.reloadAll()
             message.react(emojis.discord.CheckMark)
         }
         catch(err){

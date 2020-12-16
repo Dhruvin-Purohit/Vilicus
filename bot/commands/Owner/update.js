@@ -17,16 +17,21 @@ module.exports = class Update extends Command {
     async exec(message) {
     
         let msg = await message.channel.send(`${emojis.discord.Analytics} ${dmd.code `Stage 1.`} ${dmd.bold `Update started...`}`)
-        msg = await msg.edit(`${emojis.discord.Analytics} ${dmd.code `Stage 2.`} Unloading and Loading all ${dmd.code `Listeners`} now`)
+
+        msg = await msg.edit(`${emojis.discord.Analytics} ${dmd.code `Stage 2.`} Unloading and Loading all ${dmd.code `Inhibitors`} now`)
+        await this.client.InhibitorHandler.removeAll()
+        await this.client.InhibitorHandler.loadAll()
+        msg = await msg.edit(`${emojis.discord.Analytics} ${dmd.code `Stage 3.`} Unloading and Loading all ${dmd.code `Listeners`} now`)
         await this.client.ListenerHandler.removeAll()
         await this.client.ListenerHandler.loadAll()
-        msg = await msg.edit(`${emojis.discord.Analytics} ${dmd.code `Stage 3.`} Unloading and Loading all ${dmd.code `Commands`} now`)
+        msg = await msg.edit(`${emojis.discord.Analytics} ${dmd.code `Stage 4.`} Unloading and Loading all ${dmd.code `Commands`} now`)
         await this.client.CommandHandler.removeAll()
         await this.client.CommandHandler.loadAll()
-        msg = await msg.edit(`${emojis.discord.Analytics} ${dmd.code `Stage 4.`} Reloading ${dmd.code `everything`} now`)
+        msg = await msg.edit(`${emojis.discord.Analytics} ${dmd.code `Stage 5.(final)`} Reloading ${dmd.code `everything`} now`)
+        await this.client.InhibitorHandler.reloadAll()
         await this.client.ListenerHandler.reloadAll()
         await this.client.CommandHandler.reloadAll()
-        await msg.edit(`${emojis.discord.Information} ${dmd.code `Final Stage`} ${dmd.bold `Update Complete`}`)
+        await msg.edit(`${emojis.discord.Information} ${dmd.code `Done!`} ${dmd.bold `Update Complete`}`)
 
     }
 }

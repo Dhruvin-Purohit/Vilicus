@@ -1,5 +1,6 @@
 const ak = require('discord-akairo')
 const config = require('./../config.json')
+const bl = require('../data/blacklist.json')
 
 class VilicusClient extends ak.AkairoClient {
     constructor(Config) {
@@ -49,6 +50,8 @@ class VilicusClient extends ak.AkairoClient {
         this.fn = require('../utils/functions')
 
         this.basecolor = config.bot.basecolor
+
+        this.blacklist = bl.id
 
     }
 

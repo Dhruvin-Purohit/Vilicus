@@ -11,12 +11,12 @@ module.exports = class Unload extends Command {
             clientPermissions: ['SEND_MESSAGES', 'ADD_REACTIONS', 'USE_EXTERNAL_EMOJIS'],
             description: {
                 content: 'Unload a command or a listener',
-                usage: '< Command | Listener >'
+                usage: '< Command | Listener | Inhibitor >'
             },
             args: [
                 {
                     id: 'things',
-                    type: Argument.union('command', 'listener'),
+                    type: Argument.union('command', 'listener', 'inhibitor'),
                     prompt: {
                         start: 'What do i unload',
                         time: 4.5e4
