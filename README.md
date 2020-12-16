@@ -25,7 +25,10 @@
 If you want to open an issue (This is how you can submit bug and/or suggestions), open it [here](https://github.com/Vilicus-Bot/Vilicus/issues/new "Open an Issue")
 
 ### Pull requests
-If you want to contribute to Vilicus, You can [Fork this Repository](https://github.com/Vilicus-Bot/Vilicus/fork "Fork this repository") and then make changes, after doing so make a [Pull Request](pulls "Create a Pull Request") and i will review it!
+If you want to contribute to Vilicus, You can [Fork this Repository](https://github.com/Vilicus-Bot/Vilicus/fork "Fork this repository") and then make changes, after doing so make a [Pull Request](https://github.com/Vilicus-Bot/vilicus/pulls "Create a Pull Request") and i will review it!
 
 ## Self Hosting
 [View this file for info on Self Hosting](SelfHosting.md "View file")
+
+## License
+[This Repository is Lecensed under the MIT License](LICENSE "View License")
