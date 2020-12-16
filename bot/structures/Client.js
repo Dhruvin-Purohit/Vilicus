@@ -1,6 +1,7 @@
 const ak = require('discord-akairo')
 const config = require('./../config.json')
 const bl = require('../data/blacklist.json')
+const { User } = require('discord.js')
 
 class VilicusClient extends ak.AkairoClient {
     constructor(Config) {
@@ -53,6 +54,17 @@ class VilicusClient extends ak.AkairoClient {
 
         this.blacklist = bl.id
 
+        
+
+    }
+
+    /**
+     * @param {User} user
+     */
+    isBlacklisted(user) {
+        if(this.isOwner(user)) return false
+        else if(this.blacklist.includes(user.id)) return true
+        else return false
     }
 
     async _init() {

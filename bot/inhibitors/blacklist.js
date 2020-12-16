@@ -9,8 +9,7 @@ module.exports = class Blacklist extends Inhibitor {
         })
     }
     exec(message) {
-        if(this.client.isOwner(message.author)) return false
-        else if(this.client.blacklist.inculdes(message.author.id)) return true
+        if(this.client.isBlacklisted(message.author)) return true
         else return false
     }
 }
