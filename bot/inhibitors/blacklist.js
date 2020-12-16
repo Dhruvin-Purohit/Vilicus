@@ -1,4 +1,4 @@
-/*const { Inhibitor } = require('discord-akairo')
+const { Inhibitor } = require('discord-akairo')
 
 module.exports = class Blacklist extends Inhibitor {
     constructor() {
@@ -9,7 +9,6 @@ module.exports = class Blacklist extends Inhibitor {
         })
     }
     exec(message) {
-        if(this.client.isBlacklisted(message.author)) return false
-        else return true
+        return this.client.isBlacklisted(message.author)
     }
-}*/
+}
