@@ -30,6 +30,10 @@ class VilicusClient extends ak.AkairoClient {
             },
             automateCategories: true
         })
+        this.InihibitorHandler = new ak.InhibitorHandler(this, {
+            directory: './inhibitors',
+            automateCategories: true
+        })
         this.Config = Config
 
         this.token = config.bot.token
@@ -50,12 +54,14 @@ class VilicusClient extends ak.AkairoClient {
 
     async _init() {
         this.CommandHandler.useListenerHandler(this.ListenerHandler)
+        this.CommandHandler.useInhibitorHandler(this.InihibitorHandler)
         this.ListenerHandler.setEmitters({
             CommandHandler: this.CommandHandler,
             ListenerHandler: this.ListenerHandler,
             process
         })
         this.CommandHandler.loadAll()
+        this.InihibitorHandler.loadAll()
         this.ListenerHandler.loadAll()
     }
 
