@@ -16,13 +16,13 @@ module.exports = class Ping extends Command{
 
     async exec(message) {
 
-        const msg = await message.channel.send(`Pong?`)
+        const msg = await message.channel.send(`🏓Pong?`)
 
-        const do_something_productive_u_piece_of_shit = new MessageEmbed()
-        .setAuthor("🏓Pong!")
+        const embed = new MessageEmbed()
+        .setTitle("🏓Pong!")
         .addField("Latency:", `\`${Math.floor(msg.createdTimestamp - ((message.editedTimestamp) ? message.editedTimestamp : message.createdTimestamp))}\`ms`, true)
         .addField("API Latency:", `\`${this.client.ws.ping}ms\``, true)
 
-        return msg.edit(do_something_productive_u_piece_of_shit)
+        return msg.edit("", embed)
     }
 }

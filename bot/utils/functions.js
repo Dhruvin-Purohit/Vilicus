@@ -1,3 +1,6 @@
+const { Collection } = require('discord.js');
+const djs = require('discord.js')
+
 /**
  * Capitalize a string
  * @param {string} str
@@ -71,7 +74,30 @@ function cleanTime(time) {
     return ctime.filter(g => !g.startsWith('0')).join(', ');
 }
 
+/**
+ * @param items
+ * @param {Number} stuffperpage
+ * @param {Number} page
+ */
+function paginate(items, page = 1, stuffperpage = 10) {
+    offset = (page - 1) * stuffperpage,
+
+    paginatedItems = items.slice(offset).slice(0, stuffperpage),
+    totalPages = Math.ceil(items.length / stuffperpage);
+
+    return {
+        page: page,
+        perPage: stuffperpage,
+        prePage: page - 1 ? page - 1 : null,
+        nextPage: (totalPages > page) ? page + 1 : null,
+        total: items.length,
+        totalPages: totalPages,
+        pages: paginatedItems
+    };
+}
+
 module.exports = {
+    paginate,
     Capitalize,
     toOrdinal,
     choice,
