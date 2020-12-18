@@ -10,7 +10,8 @@ module.exports = class Guilds extends Command {
             clientPermissions: ['SEND_MESSAGES', 'EMBED_LINKS', 'USE_EXTERNAL_EMOJIS', 'ADD_REACTIONS'],
             ownerOnly: true,
             description: {
-                content: 'Get a full list of servers vilicus is in!'
+                content: 'Get a full list of servers vilicus is in!',
+                usage: '[ page ]'
             },
             args: [{
                 id: 'page',
@@ -25,14 +26,14 @@ module.exports = class Guilds extends Command {
         if(guilds.size < 11) {
             const embed = new MessageEmbed()
             .setTitle('Guilds List')
-            .setDescription(guilds.map(m => `${m} - ${dmd.bold `(${m.id})`}`))
+            .setDescription(guilds.sort((a, b) => a.members.cache.size - b.members.cache.size).map(m => `${m} - ${dmd.bold `(${m.id})`}`))
             return message.channel.send(embed)
         } else {
-            let paged = fn.paginate(guilds.map(m => `${m} - ${dmd.bold `(${m.id})`}`), page)
-            if(!paged.pages || paged.pages.length <= 0) return message.channel.send(`${message.author}, page ${paged.page} doesn't exist you fool, ${paged.totalPages ? `${Number(paged.totalPages) === 1 ? `There is only ${dmd.code `1`} page` : `There are only ${dmd.code `${paged.totalPages}`} pages`}` : `there is no page for you`}`)
+            let paged = fn.paginate(guilds.sort((a, b) => a.members.cache.size - b.members.cache.size).map(m => `${m} - ${dmd.bold `(${m.id})`}`), page)
+            if(!paged.pages || paged.pages.length <= 0) return message.channel.send(`${message.author}, page ${dmd.code `${paged.page}`} doesn't exist you fool, ${paged.totalPages ? `${Number(paged.totalPages) === 1 ? `There is only ${dmd.code `1`} page` : `There are only ${dmd.code `${paged.totalPages}`} pages`}` : `There is no page for you`}`)
             const embed = new MessageEmbed()
             .setTitle('Guild List')
-            .setDescription(paged.pages.map(m => `${m}`))
+            .setDescription(paged.pages.map(m => `${m}`).join(`\n`))
             .setFooter(`Showing page ${paged.page}/${paged.totalPages}`)
             return message.channel.send(embed)
         }
