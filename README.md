@@ -31,4 +31,4 @@ If you want to contribute to Vilicus, You can [Fork this Repository](https://git
 [View this file for info on Self Hosting](SelfHosting.md "View file")
 
 ## License
-[This Repository is Lecensed under the MIT License](LICENSE "View License")
+[This Repository is Licensed under the MIT License](LICENSE "View License")
