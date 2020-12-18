@@ -54,8 +54,7 @@ module.exports = class Help extends Command {
         }
         message.channel.send(embed)
     } else {
-        let you_fool = `${message.author}, Command ${dmd.code `${command}`} doesn't exist you fool`
-        if(command.ownerOnly && !this.client.isOwner(message.author)) return message.channel.send(you_fool)
+        if(command.ownerOnly && !this.client.isOwner(message.author)) return message.channel.send(`${message.author}, Command ${dmd.code `${command}`} doesn't exist you fool`)
         let cmd = this.handler.findCommand(command)
         if(!cmd) return message.channel.send(you_fool)
         else {
@@ -90,10 +89,10 @@ module.exports = class Help extends Command {
                 dmd.code `${fn.cleanTime(cmd.cooldown)}`
             )
             if (cmd.userPermissions) {
-                embed.addField(`${emojis.discord.Preferences} User Permissions required`, dmd.code `${((cmd.userPermissions).map((p) => permissions[p])).join(", ").toString() || 'None'}`, true)
+                embed.addField(`${emojis.discord.Preferences} User Permissions required`, `${((cmd.userPermissions).map((p) => dmd.code `${permissions[p]}`)).join(", ").toString() || 'None'}`, true)
                 }
             if (cmd.clientPermissions) {
-                embed.addField(`${emojis.discord.Application} Bot Permissions required`, dmd.code `${((cmd.clientPermissions).map((p) => permissions[p])).join(", ").toString() || 'None'}`, true)
+                embed.addField(`${emojis.discord.Application} Bot Permissions required`, `${((cmd.clientPermissions).map((p) => dmd.code `${permissions[p]}`).join(", ").toString() || 'None'}`, true)
                 }
 
         return message.channel.send(embed);
