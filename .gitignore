@@ -11,6 +11,7 @@ test.js
 src
 blacklist.json
 cache
+bs
 
 ## just for intellij to work
 jsconfig.json

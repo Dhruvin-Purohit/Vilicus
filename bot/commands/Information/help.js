@@ -92,9 +92,11 @@ module.exports = class Help extends Command {
                 embed.addField(`${emojis.discord.Preferences} User Permissions required`, `${((cmd.userPermissions).map((p) => dmd.code `${permissions[p]}`)).join(", ").toString() || 'None'}`, true)
                 }
             if (cmd.clientPermissions) {
-                embed.addField(`${emojis.discord.Application} Bot Permissions required`, `${((cmd.clientPermissions).map((p) => dmd.code `${permissions[p]}`).join(", ").toString() || 'None'}`, true)
+                embed.addField(`${emojis.discord.Application} Bot Permissions required`, `${((cmd.clientPermissions).map((p) => dmd.code `${permissions[p]}`).join(", ").toString()) || 'None'}`, true)
                 }
-
+            if (cmd.prefix != prefix) {
+                embed.addField(`${emojis.discord.Reply}Override Prefix`, dmd.code `${cmd.prefix}`)
+            }
         return message.channel.send(embed);
         }
     }

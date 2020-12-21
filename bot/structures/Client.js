@@ -3,6 +3,13 @@ const config = require('./../config.json')
 const bl = require('../data/blacklist.json')
 const { User } = require('discord.js')
 
+require('./Discord.js/Guild')
+
+function getprefix(msg) {
+    if(msg.guild) return msg.guild.db.prefix
+    return config.bot.prefix
+}
+
 class VilicusClient extends ak.AkairoClient {
     constructor(Config) {
         super({
@@ -13,7 +20,7 @@ class VilicusClient extends ak.AkairoClient {
         })
         this.CommandHandler = new ak.CommandHandler(this, {
             directory: './commands',
-            prefix: '+',
+            prefix: message => message.guild ? message.guild.db.prefix : config.bot.prefix,
             allowMention: true,
             blockBots: true,
             blockClient: true,
