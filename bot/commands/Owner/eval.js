@@ -36,6 +36,6 @@ module.exports = class Eval extends Command {
         } catch(err) {
             return message.channel.send(`${emojis.basic.error}**Error:**\n${dmd.codeblock('js') `${err}`}`)
         }
-       
+
     }
 }

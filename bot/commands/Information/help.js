@@ -23,14 +23,14 @@ module.exports = class Help extends Command {
         })
     }
     async exec(message, { command }) {
-    let prefix = (this.handler.prefix)
+    let prefix = this.handler.prefix
 
     if(!command) {
 
         const embed = new MessageEmbed()
         .setTitle(`Help menu`)
         .setColor(this.client.basecolor)
-        .setFooter(`${prefix}${this.description.content} ${this.description.usage}`)
+        .setFooter(`${prefix} ${this.description.usage}`)
 
         let cat_map = {
             Information: emojis.discord.Information,
