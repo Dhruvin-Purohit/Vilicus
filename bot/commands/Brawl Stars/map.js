@@ -5,7 +5,7 @@ const dmd = require('discord-md-tags')
 
 //will do this later for now just leaving it
 //https://cdn.starlist.pro/map/Hard-Rock-Mine.png?v=1//use this later (will need a json map but gonna be EZ + no ratelimits so yeah)
-/*module.exports*/ = class Map extends Command {
+/*module.exports =*/ class Map extends Command {
     constructor() {
         super("map", {
             prefix: 'bs',

@@ -3,12 +3,11 @@ const config = require('./../config.json')
 const bl = require('../data/blacklist.json')
 const { User } = require('discord.js')
 
+require('./GuildDB')
 require('./Discord.js/Guild')
 
-function getprefix(msg) {
-    if(msg.guild) return msg.guild.db.prefix
-    return config.bot.prefix
-}
+require('./UserDB')
+require('./Discord.js/User')
 
 class VilicusClient extends ak.AkairoClient {
     constructor(Config) {
@@ -61,8 +60,6 @@ class VilicusClient extends ak.AkairoClient {
 
         this.blacklist = bl.id
 
-        
-
     }
 
     /**
@@ -86,6 +83,7 @@ class VilicusClient extends ak.AkairoClient {
         this.CommandHandler.loadAll()
         this.InhibitorHandler.loadAll()
         this.ListenerHandler.loadAll()
+
     }
 
     async start() {
