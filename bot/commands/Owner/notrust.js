@@ -23,9 +23,9 @@ module.exports = class extends Command {
 
     async exec(message, { who }) {
 
-        if(!who.trusted) return message.channel.send(`${who.tag} is already a non trusted user.`)
-        who.trusted = false
-        await who.save
+        if(!who.db.udb.trusted) return message.channel.send(`${who.tag} is already a non trusted user.`)
+        who.db.udb.trusted = false
+        await who.db.udb.save
         message.react(emojis.discord.CheckMark)
 
     }
