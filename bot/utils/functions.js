@@ -95,20 +95,24 @@ class Pageinator {
      * Creates a paginator/pagination
      *
      * @param {Channel} channel The channel which the paginator is sent in *
+     * @param {String} title The Title of the embed
      * @param {any[]} items The items that the paginator should display *
      * @param {Function} func The function that will return a string that will be displayed in the embed. It should take in one argument, the item that will be processed. *
      * @param {number} maxNumber The number of items that will be displayed in one page of the paginator. Defaults to 4.
-     *
+     * @param {number|String} color The Color of the paginated embed
+     * 
      * @example
      * new Paginator(message, ['Item 1', 'Item 2', 'Item 3', 'Item 4'], (item) => item, 2) *
      *
      */
 
-    constructor(message, items, func, maxNumber = 4) {
+    constructor(message, title, items, func, maxNumber = 4, color) {
         this.message = message
         this.items = items
         this.maxNumber = maxNumber
         this.func = func
+        this.color = color
+        this.title = title
 
         this.display(this.generate())
     }
@@ -162,7 +166,7 @@ class Pageinator {
             k += max
 
             const display = current.map((item) => this.func(item)).join('\n')
-            const embed = new djs.MessageEmbed().setDescription(display)
+            const embed = new djs.MessageEmbed().setTitle(this.title).setDescription(display).setColor(this.color)
             embeds.push(embed)
         }
         return embeds

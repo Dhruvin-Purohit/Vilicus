@@ -3,11 +3,12 @@ const fetch = require('node-fetch')
 const dmd = require('discord-md-tags')
 const emojis = require('../../utils/emojis.json')
 const { MessageEmbed } = require('discord.js')
+const fn = require('../../utils/functions')
 
 module.exports = class extends Command {
     constructor() {
-        super('bsstats', {
-            aliases: ['stats', 'statistics', 'profile'],
+        super('bsbrawlers', {
+            aliases: ['brawler', 'brawlers'],
             prefix: 'bs',
             clientPermissions: ['EMBED_LINKS', 'SEND_MESSAGES'],
             typing: true,
@@ -18,7 +19,7 @@ module.exports = class extends Command {
                 }
             ],
             description: {
-                content: 'Get brawl stars stats of a given player tag or of linked account',
+                content: 'Get brawl stars brawlers of a given player tag or of linked account',
                 usage: '[ Player tag ]'
             },
             cooldown: 4.5e4
@@ -35,21 +36,14 @@ module.exports = class extends Command {
 
             if(res.status ===404) return message.channel.send(`The player tag linked to your account is incorrect do change that later.`)
             if(res.status === 200) {
-                let brawlers = []
-                let i
-                for (i = 0; i < stats.brawlers.length; i++ ) {
-                    brawlers.push(dmd.code `${stats.brawlers[i].name}`)
-                }
-                const embed = new MessageEmbed()
-                .setTitle(`${stats.name}`)
-                .addField(`Profile`, `Name: ${dmd.code `${stats.name}`}\nTag: ${dmd.code `${stats.tag}`}\nExperience Level: ${dmd.code `${stats.expLevel}`}\nTrophies: ${dmd.code `${stats.trophies || 0}/${stats.highestTrophies || 0}`}\nPower Play Points: ${dmd.code `${stats.powerPlayPoints || 0}/${stats.highestPowerPlayPoints}`}`, true)
-                .addField(`Victories`, `3v3: ${dmd.code `${stats['3vs3Victories'] || 0}`}\nDuo: ${dmd.code `${stats.duoVictories || 0}`}\nSolo: ${dmd.code `${stats.soloVictories || 0}`}\nTotal: ${dmd.code `${stats.soloVictories + stats.duoVictories + stats["3vs3Victories"]}`}`, true)
-                if(stats.club) {
-                embed.addField(`Club`, `Name:${dmd.code `${stats.club.name}`}\nTag: ${dmd.code `${stats.club.tag}`}`, true)
-                }
-                embed.addField(`Brawlers`, `${brawlers.join(`, `)}`)
-                .setColor("#" + stats.nameColor.slice(4))
-                return message.channel.send(embed)
+            let brawlers = []
+            let i
+            for (i = 0; i < stats.brawlers.length; i++ ) {
+                brawlers.push(stats.brawlers[i])
+            }
+            const paginator = new fn.Pageinator(message, stats.name, brawlers, (b) => `Name: ${dmd.code `${b.name}`}\nPower Level: ${dmd.code `${b.power}`}\nRank: ${dmd.code `${b.rank}`}\nTrophies: ${dmd.code `${b.trophies}`}\nHighest Trophies: ${dmd.code `${b.highestTrophies}`}${b.gadgets.length ? `\nGadgets: ${dmd.code `${b.gadgets.map((m) => m.name).join(`, `)}`}` : ``}${b.starPowers.length ? `\nStar Power(s): ${dmd.code `${b.starPowers.map((m) => m.name).join(`, `)}`}` : `` }`, 1, "#" + stats.nameColor.slice(4))
+
+            //paginator.generate()
             } else {
                 return message.channel.send(`Something Strange happened kindly report it,\n${dmd.bold `${emojis.basic.error}Error`}:\n${stats.reason}  | ${stats.message}`)
             }
@@ -69,19 +63,14 @@ module.exports = class extends Command {
                 let brawlers = []
                 let i
                 for (i = 0; i < stats.brawlers.length; i++ ) {
-                    brawlers.push(dmd.code `${stats.brawlers[i].name}`)
+                    brawlers.push(stats.brawlers[i])
                 }
                 const embed = new MessageEmbed()
-                .setTitle(`${stats.name}`)
-                .addField(`Profile`, `Name: ${dmd.code `${stats.name}`}\nTag: ${dmd.code `${stats.tag}`}\nExperience Level: ${dmd.code `${stats.expLevel}`}\nTrophies: ${dmd.code `${stats.trophies || 0}/${stats.highestTrophies || 0}`}\nPower Play Points: ${dmd.code `${stats.powerPlayPoints || 0}/${stats.highestPowerPlayPoints}`}`, true)
-                .addField(`Victories`, `3v3: ${dmd.code `${stats['3vs3Victories'] || 0}`}\nDuo: ${dmd.code `${stats.duoVictories || 0}`}\nSolo: ${dmd.code `${stats.soloVictories || 0}`}\nTotal: ${dmd.code `${stats.soloVictories + stats.duoVictories + stats["3vs3Victories"]}`}`, true)
-                if(stats.club) {
-                embed.addField(`Club`, `Name:${dmd.code `${stats.club.name}`}\nTag: ${dmd.code `${stats.club.tag}`}`, true)
-                }
-                embed.addField(`Brawlers`, `${brawlers.join(`, `)}`)
+                .setTitle(`${stats.name}'s Bralwers`)
+                .setDescription(`${brawlers.map((b) => `Name: ${dmd.code `${b.name}`}\nPower Level: ${dmd.code `${b.power}`}\nRank: ${dmd.code `${b.rank}`}\nTrophies: ${dmd.code `${b.trophies}`}\nHighest Trophies: ${dmd.code `${b.highestTrophies}`} ${b.gadgets.length ? `\nGadgets: ${dmd.code `${b.gadgets.map((m) => m.name).join(`, `)}`}` : ``} ${b.starPowers ? `Star Power(s): ${dmd.code `${b.starPowers.map((m) => m.name).join(`, `)}`}` : `` }`).join(`\n`)}`)
                 .setColor("#" + stats.nameColor.slice(4))
                 return message.channel.send(embed)
-                } else {
+            } else {
                     return message.channel.send(`Something Strange happened kindly report it,\n${dmd.bold `${emojis.basic.error}Error`}:\n${stats.reason}  | ${stats.message}`)
                 }
             } catch(err) {
