@@ -1,8 +1,10 @@
 const { Command } = require('discord-akairo')
+const dmd = require('discord-md-tags')
 
 module.exports = class extends Command {
     constructor() {
         super('prefix', {
+            aliases: ['prefix'],
             clientPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
             userPermissions: ['MANAGE_GUILD'],
             description: {
@@ -25,7 +27,7 @@ module.exports = class extends Command {
 
         message.guild.db.gdb.prefix = newpre
         await message.guild.db.gdb.save()
-        message.channel.send(`The prefix for this server has been updated successfully!\nThe new prefix is ${newpre}.`)
+        message.channel.send(`The prefix for this server has been updated successfully!\nThe new prefix is ${dmd.code `${newpre}`}.`)
 
     }
 }

@@ -9,19 +9,28 @@ module.exports = class extends Listener {
             event: "messageUpdate"
         })
     }
-    exec(oldmessage, newmessage) {
-        if(newmessage.author.bot) return
-        if(newmessage.guild.db.gdb.msglog) {
-            if(newmessage.content != oldmessage.content)
+    exec(oldMessage, newMessage) {
+        if(newMessage.author.bot) return
+        if(newMessage.guild.db.gdb.msglog) {
+            if(newMessage.content != oldMessage.content) {
+            let oldMessageContent = oldMessage.content
+            if(oldMessage.content.length > 120) oldMessageContent = oldMessage.content.slice(0, 120) + '...'
+            
+            let newMessageContent = newMessage.content
+            if(newMessage.content.length > 120) newMessageContent = oldMessage.content.slice(0, 120) + '...'
+            
             const embed = new MessageEmbed()
-            .setTitle(`[Message by ${newmessage.author.tag} in #${newmessage.channel.name} edited](${newmessage.url} "Jump to the Message")`)
-            .setDescription(`${dmd.bold `Before:`}\n${oldmessage.content || "\u200b"}\n${dmd.bold `After:`}\n${newmessage.content || "\u200b"}`)
-            if(oldmessage.attachments.first()) embed.setFooter(`The message had an attachment which could not be loaded!`)
+            .setDescription(`${dmd.bold `[Message by ${newMessage.author.tag} in #${newMessage.channel.name} edited](${newMessage.url} "Jump to the Message")`}`)
+            .addField(`Before:`, oldMessageContent || "\u200b")
+            .addField(`After:`, newMessageContent || "\u200b")
+
+            if(oldMessage.attachments.first()) embed.setFooter(`The message had an attachment which could not be loaded!`)
             try{
-            newmessage.guild.channels.cache.get(newmessage.guild.db.gdb.msglog).send(embed)
+            newMessage.guild.channels.cache.get(newMessage.guild.db.gdb.msglog).send(embed)
             } catch {
                 //HaHa MiSsInG PeRmS
             }
+        }
         }
 
     }

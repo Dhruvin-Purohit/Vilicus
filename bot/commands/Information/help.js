@@ -23,14 +23,14 @@ module.exports = class Help extends Command {
         })
     }
     async exec(message, { command }) {
-    let prefix = this.handler.prefix
+    let prefix = this.handler.prefix(message)
 
     if(!command) {
 
         const embed = new MessageEmbed()
         .setTitle(`Help menu`)
         .setColor(this.client.basecolor)
-        .setFooter(`${prefix} ${this.description.usage}`)
+        .setFooter(`${prefix}help [ Command ]`)
 
         let cat_map = {
             Information: emojis.discord.Information,
@@ -70,7 +70,7 @@ module.exports = class Help extends Command {
             .setTitle(title)
             .addField(`${emojis.discord.Category_Create} Category`, cmd.category.id || '\u200b')
 			.addField(`${emojis.discord.Rich_Presence} Description`, dmd.codeblock() `${cmd.description.content || '\u200b'}`)
-            .setFooter(`The values within < > are neccessary whereas the ones within [ ] are optional`)
+            .setFooter('The values within < > are neccessary whereas the ones within [ ] are optional')
             .setThumbnail(message.client.user?.displayAvatarURL({
                 dynamic: true,
                 format: 'png',
