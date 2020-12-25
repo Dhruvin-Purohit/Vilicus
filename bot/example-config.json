@@ -1,0 +1,29 @@
+{
+    "bot": {
+        "token": "your bot's token",
+        "ownerids": ["bot owner ids", "must be array"],
+        "developerids": ["this thing has", "no functionality for now"],
+        "supportservid": "bot's support server id",
+        "prefix": "bot's prefix",
+        "basecolor": "bot's base color for embeds"
+    },
+    "channels": {
+        "error": "error log channel id",
+        "other": "other log channel id",
+        "disconsole": "disconsole channel id"
+    },
+    "api": {
+        "bs": "brawl stars api key",
+        "coc": "clash of clans api key",
+        "cr": "clash royale api key",
+        "gh": "github api key"
+    },
+    "botlist": {
+        "top": "top.gg token",
+        "topwh": "top.gg password (not necessary atm)"
+    },
+    "db": {
+        "guild": "guild database MongoDB atlas cluster url",
+        "user": "user database MongoDB atlas cluster url"
+    }
+}

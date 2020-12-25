@@ -1,7 +1,7 @@
 const { Listener } = require('discord-akairo')
 const fn = require('../../utils/functions')
 
-module.exports = class Cooldown extends Listener {
+module.exports = class extends Listener {
     constructor() {
         super("ready", {
             emitter: "client",

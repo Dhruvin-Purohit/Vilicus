@@ -22,7 +22,7 @@ module.exports = class extends Command {
                 content: 'Get brawl stars brawlers of a given player tag or of linked account',
                 usage: '[ Player tag ]'
             },
-            cooldown: 4.5e4
+            cooldown: 10e4
         })
     }
 

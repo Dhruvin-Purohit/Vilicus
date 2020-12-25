@@ -27,6 +27,7 @@ module.exports = class extends Command {
         let tagrgx = /^#?[0-9A-Z]/i
         if(!tagrgx.test(tag)) return message.channel.send(`Invalid player tag provided!`)
         if(tag.startsWith('#')) tag = tag.slice(1)//Big brain
+        if(message.author.db.udb.bs.length >= 3) return message.channel.send(`${message.author}, You cannot save more than ${message.author.db.udb.bs.length} player tags.`)
         try {
             const res = await fetch(`https://bsproxy.royaleapi.dev/v1/players/%23${tag}`, { headers: {'Authorization': `Bearer ${this.client.bsapi}`}});
             const stats = await res.json();

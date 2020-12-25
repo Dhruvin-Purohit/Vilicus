@@ -1,6 +1,6 @@
 const { Listener } = require('discord-akairo')
 const dmd = require('discord-md-tags')
-module.exports = class Message extends Listener {
+module.exports = class extends Listener {
     constructor() {
         super('message', {
             emitter: "client",
@@ -9,7 +9,7 @@ module.exports = class Message extends Listener {
         })
     }
     exec(message) {
-        if(!message.author.bot && message.content === `<@${this.client.user?.id}>` || message.content === `<@!${this.client.user?.id}>`) {
+        if(!this.client.isBlacklisted(message.author) && !message.author.bot && message.content === `<@${this.client.user?.id}>` || message.content === `<@!${this.client.user?.id}>`) {
             try {
                 message.channel.send(dmd.bold `My prefix is \`${this.client.CommandHandler.prefix}\``)
             } catch {

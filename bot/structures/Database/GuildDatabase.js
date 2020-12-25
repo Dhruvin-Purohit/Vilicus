@@ -30,4 +30,10 @@ module.exports = class db {
     get prefix() {
         return this.gdb.prefix || config.bot.prefix
     }
+
+    async dropdb() {
+        await GuildModel.findOneAndDelete({
+            id: Guild.id
+        })
+    }
 }
