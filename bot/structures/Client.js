@@ -19,7 +19,7 @@ class VilicusClient extends ak.AkairoClient {
         })
         this.CommandHandler = new ak.CommandHandler(this, {
             directory: './commands',
-            prefix: message => message.guild ? message.guild.db.prefix : config.bot.prefix,
+            prefix: message => message.guild ? message.guild.db.gdb.prefix : config.bot.prefix,
             allowMention: true,
             blockBots: true,
             blockClient: true,

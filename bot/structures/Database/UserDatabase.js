@@ -11,17 +11,8 @@ module.exports = class db {
         (async() => {
             this.udb = await UserModel.findOne({
                 id: User.id
-            }, (err, g) => {
-                if(err) User.client.emit("error", err)
-    
-                if(!g) {
-                    const newG = new UserModel({
-                        id: User.id
-                    })
-                    newG.save()
-                    .then(res => console.log(res))
-                    .catch(err => User.client.emit("error", err))
-                }
+            }) || new UserModel({
+                id: User.id
             })
             })()
 

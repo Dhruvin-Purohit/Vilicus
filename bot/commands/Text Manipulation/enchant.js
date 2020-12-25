@@ -1,6 +1,6 @@
 const { Command } = require('discord-akairo')
-const { MessageEmbed } = require('discord.js')
 const minecraft = require('../../assets/letter-maps.json')
+const dmd = require('discord-md-tags')
 
 module.exports = class Enchant extends Command{
     constructor() {
@@ -36,14 +36,10 @@ module.exports = class Enchant extends Command{
         }
         stuff = stuff.toLowerCase()
         stuff = stuff.split('')
-
         let enchanted = Enchant(stuff)
         enchanted = enchanted.join('')
 
-        const embed = new MessageEmbed()
-        .setDescription(`\`\`\`${enchanted}\`\`\``)
-
-        return message.channel.send(embed)
+        return message.channel.send(`${dmd.codeblock("js") `${enchanted}`}`)
 
     }
 }

@@ -24,6 +24,7 @@ module.exports = class extends Command {
     }
 
     async exec(message, { tag }) {
+        if(!tag) return message.channel.send(`No player tag provided`)
         let tagrgx = /^#?[0-9A-Z]/i
         if(!tagrgx.test(tag)) return message.channel.send(`Invalid player tag provided!`)
         if(tag.startsWith('#')) tag = tag.slice(1)//Big brain

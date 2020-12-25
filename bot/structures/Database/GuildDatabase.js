@@ -11,17 +11,8 @@ module.exports = class db {
         (async() => {
             this.gdb = await GuildModel.findOne({
                 id: Guild.id
-            }, (err, g) => {
-                if(err) Guild.client.emit("error", err)
-    
-                if(!g) {
-                    const newG = new GuildModel({
-                        id: Guild.id
-                    })
-                    newG.save()
-                    .then(res => console.log(res))
-                    .catch(err => Guild.client.emit("error", err))
-                }
+            }) || new GuildModel({
+                id: Guild.id
             })
             })()
 
