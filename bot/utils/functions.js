@@ -10,6 +10,14 @@ function Capitalize(str) {
 }
 
 /**
+ * Force Capitalize a string, all other text lowercase
+ * @param {string} str
+ */
+function forceCapitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+}
+
+/**
  * To Ordinal Number
  * @param {int} number
  */
@@ -21,6 +29,19 @@ function toOrdinal(int) {
     else if (int.endsWith('3')) return int + 'rd'
     else return int + 'th'
 }
+
+/**
+ * Drops the specified element from the array
+ * @param {Array} arr
+ * @param {*} value
+ */
+function drop(arr, value) {
+    var index = arr.indexOf(value);
+    if (index > -1) {
+      arr.splice(index, 1);
+    }
+    return arr;
+  }
 
 /**
  * Choice is random from array (gave the name choice bc i am used to the python way)
@@ -182,4 +203,6 @@ module.exports = {
     cleanArray,
     cleanTime,
     Pageinator,
+    forceCapitalize,
+    drop
 }

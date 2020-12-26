@@ -33,6 +33,10 @@ module.exports = class extends Command {
             SEND_MESSAGES: false,
             ADD_REACTIONS: false
         }, rsn)
+        await chn.updateOverwrite(this.client.user, {
+            SEND_MESSAGES: true,
+            ADD_REACTIONS: true
+        })
 
         await message.react('🔒')
         const embed = new MessageEmbed()

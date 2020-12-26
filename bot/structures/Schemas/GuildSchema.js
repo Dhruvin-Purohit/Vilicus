@@ -26,6 +26,18 @@ const GuildSchema = new mongoose.Schema ({
     disabled: {
         type: Array,
         default: null
+    },
+    bsclub: {
+        type: String,
+        default: null
+    },
+    cocclan: {
+        type: String,
+        default: null
+    },
+    crclan: {
+        type: String,
+        default: null
     }
 })
 
