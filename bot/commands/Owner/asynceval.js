@@ -1,6 +1,7 @@
 const { Command } = require('discord-akairo');
 const emojis = require('../../utils/emojis.json')
 const dmd = require('discord-md-tags')
+const util = require('util')
 
 module.exports = class Eval extends Command {
     constructor() {
@@ -32,6 +33,7 @@ module.exports = class Eval extends Command {
             let evalled = await eval("(async () => {" + code + "})()")
             let t2 = new Date()
             let tt = t2 - t1
+            if (typeof evalled !== 'string') evalled = util.inspect(evalled, { depth: 0 });
             return message.channel.send(`*Evaluated in ${tt}ms*\n${dmd.codeblock('js') `${evalled}` }`)
         } catch(err) {
             return message.channel.send(`${emojis.basic.error}**Error:**\n${dmd.codeblock('js') `${err}`}`)
