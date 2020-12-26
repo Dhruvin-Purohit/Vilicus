@@ -12,6 +12,7 @@ src
 blacklist.json
 cache
 bs
-
+error.log
+every.log
 ## just for intellij to work
 jsconfig.json

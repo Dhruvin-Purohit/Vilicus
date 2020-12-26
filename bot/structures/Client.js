@@ -2,6 +2,7 @@ const ak = require('discord-akairo')
 const config = require('./../config.json')
 const bl = require('../data/blacklist.json')
 const { User } = require('discord.js')
+const logger = require('./Other/logger')
 
 require('./GuildDB')
 require('./Discord.js/Guild')
@@ -43,6 +44,8 @@ class VilicusClient extends ak.AkairoClient {
             automateCategories: true
         })
         this.Config = Config
+
+        this.logger = logger
 
         this.token = config.bot.token
 
