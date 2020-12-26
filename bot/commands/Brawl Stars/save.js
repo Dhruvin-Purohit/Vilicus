@@ -35,8 +35,6 @@ module.exports = class extends Command {
             const stats = await res.json();
             if (!stats.reason) {
 
-                if(message.author.db.udb.bs.includes(tag)) return message.channel.send(`That tag is already Linked to your account.`)
-
                 message.author.db.udb.bs.push(tag)
                 await message.author.db.udb.save()
                 return message.channel.send(`${message.author}, Your Brawl Stars Account,\n${dmd.bold `${stats.name}`}(${stats.tag}) has been linked to your account successfully`)
