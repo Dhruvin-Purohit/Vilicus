@@ -19,7 +19,8 @@ module.exports = class extends Command {
                     id: 'tag',
                     type: 'string'
                 }
-            ]
+            ],
+            cooldown: 10e4
         })
     }
 
