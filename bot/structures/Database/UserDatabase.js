@@ -34,4 +34,10 @@ module.exports = class db {
         return this.udb?.cr
     }
 
+    async drop() {
+        await UserModel.findOneAndDelete({
+            id: User.id
+        })
+    }
+
 }
