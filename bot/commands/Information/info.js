@@ -1,6 +1,9 @@
 const { Command, Argument } = require('discord-akairo')
 const dmd = require('discord-md-tags')
 const { GuildEmoji } = require('discord.js')
+const { VoiceChannel } = require('discord.js')
+const { CategoryChannel } = require('discord.js')
+const { StoreChannel } = require('discord.js')
 const { MessageEmbed } = require('discord.js')
 const { GuildChannel } = require('discord.js')
 const { GuildMember } = require('discord.js')
@@ -119,8 +122,18 @@ module.exports = class extends Command {
             const embed = new MessageEmbed()
 
         } else if (what instanceof GuildChannel) {
-            //Check the instances again TextChannel etc.
-            //https://discord.js.org/#/docs/main/stable/class/GuildChannel
+
+            if (what instanceof TextChannel) {
+
+            } else if (what instanceof VoiceChannel) {
+
+            } else if (what instanceof NewsChannel) {
+                
+            } else if (what instanceof StoreChannel) {
+                
+            } else if (what instanceof CategoryChannel) {
+
+            }
 
         } else if (what instanceof GuildEmoji) {
             const embed = new MessageEmbed()
