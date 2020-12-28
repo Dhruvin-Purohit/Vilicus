@@ -22,7 +22,10 @@ module.exports = class extends Listener {
         }))
         .setDescription(`${dmd.bold `${message.author.tag}`}(${message.author.id}) used ${dmd.bold `${command}`}${message.guild ? `in ${message.guild.name}` : `in DMs`}`)
         .setFooter(`${args ? args : '\u200b'}`)
-
+        try {
         commandlogs.send(embed)
+        } catch {
+            //No
+        }
     }
 }
