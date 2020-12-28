@@ -13,6 +13,10 @@ module.exports = class extends Command {
             },
             args: [
                 {
+                    id: 'rawJson',
+                    type: 'string'
+                },
+                {
                     id: 'embedTitle',
                     match: 'option',
                     flag: 'titile='
@@ -46,8 +50,8 @@ module.exports = class extends Command {
         })
     }
 
-    async exec(message, { embedTitle, embedDesc, embedThumb, embedColor, embedImage, embedFoot }) {
-        if(!embedTitle && !embedDesc && !embedThumb && !embedColor && !embedImage && !embedFoot) {
+    async exec(message, { rawJson, embedTitle, embedDesc, embedThumb, embedColor, embedImage, embedFoot }) {
+        if(!embedTitle && !embedDesc && !embedThumb && !embedColor && !embedImage && !embedFoot && !rawJson) {
             this.client.util.embed()
             .setTitle(`Title`)
             .setDescription(`Description`)
@@ -61,6 +65,10 @@ module.exports = class extends Command {
                 content: content,
                 embed: embed
                 })
+        } else if(!embedTitle && !embedDesc && !embedThumb && !embedColor && !embedImage && !embedFoot && rawJson) {//Had to be like this ;-;
+            return message.util.send({
+                embed: rawJson.toJSON()
+            })//I highly doubt this will error
         } else {
             const embed = this.client.util.embed()
             if(embedTitle) embed.setTitle(embedTitle)
