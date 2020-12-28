@@ -24,6 +24,7 @@ class VilicusClient extends ak.AkairoClient {
             allowMention: true,
             blockBots: true,
             blockClient: true,
+            handleEdits: true,
             commandUtil: true,
             argumentDefaults: {
             prompt: {
