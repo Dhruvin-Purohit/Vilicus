@@ -52,11 +52,11 @@ module.exports = class Help extends Command {
 
             if (something) embed.addField(something, `${category.map(cmd => dmd.code `${cmd.aliases[0]}`).join(' ')}`);
         }
-        message.channel.send(embed)
+        return message.util.send(embed)
     } else {
-        if(command.ownerOnly && !this.client.isOwner(message.author)) return message.channel.send(`${message.author}, Command ${dmd.code `${command}`} doesn't exist you fool`)
+        if(command.ownerOnly && !this.client.isOwner(message.author)) return message.util.send(`${message.author}, Command ${dmd.code `${command}`} doesn't exist you fool`)
         let cmd = this.handler.findCommand(command)
-        if(!cmd) return message.channel.send(you_fool)
+        if(!cmd) return message.util.send(you_fool)
         else {
             let title;
             if(cmd.description.usage){
@@ -97,7 +97,7 @@ module.exports = class Help extends Command {
             if (cmd.prefix != prefix) {
                 embed.addField(`${emojis.discord.Reply}Override Prefix`, dmd.code `${cmd.prefix}`)
             }
-        return message.channel.send(embed);
+        return message.util.send(embed);
         }
     }
     }

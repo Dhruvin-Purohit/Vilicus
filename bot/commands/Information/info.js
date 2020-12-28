@@ -32,7 +32,7 @@ module.exports = class extends Command {
 
     async exec(message, { what }) {
         if(what instanceof Guild) {
-            if(!what.available) return message.channel.send('Provided guild is not available')
+            if(!what.available) return message.util.send('Provided guild is not available')
             let features = {
                 ANIMATED_ICON: "Animated Icon",
                 BANNER: "Banner",
@@ -81,7 +81,7 @@ module.exports = class extends Command {
             ))
             .setImage(what.bannerURL())
             .setColor(this.client.basecolor)
-            return message.channel.send(embed)
+            return message.util.send(embed)
         } else if (what instanceof GuildMember) {
             let user = what.user
             let member = what
@@ -116,7 +116,7 @@ module.exports = class extends Command {
             embed.setColor(member.displayHexColor)
             .setThumbnail(user.displayAvatarURL({dynamic: true, size: 4096}))
 
-            return message.channel.send(embed)
+            return message.util.send(embed)
 
         } else if (what instanceof Role) {
             const embed = new MessageEmbed()

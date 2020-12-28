@@ -22,10 +22,10 @@ module.exports = class extends Command {
         })
     }
     async exec(message, { chn }) {
-        if(!chanel instanceof TextChannel) return message.channel.send('Woah dude you gotta give a valid Text Channel')
+        if(!chanel instanceof TextChannel) return message.util.send('Woah dude you gotta give a valid Text Channel')
         try {
             await this.client.channels.cache.get("get id and put here").addFollower(chn, 'Wants to be aware of important stuff, Let\'s Go')
-            return message.channel.send('Done!')
+            return message.util.send('Done!')
         } catch (err) {
             this.client.emit("error", err, message, this)
         }

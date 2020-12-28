@@ -31,7 +31,7 @@ module.exports = class Permissions extends Command {
             .setThumbnail(rm.user.displayAvatarURL({dynamic: true}))
             .setColor(rm.displayHexColor)
 
-            return message.channel.send(embed)
+            return message.util.send(embed)
         } else if (rm instanceof Role) {
             let perms = rm.permissions.toArray().map(p => `* ${permissions[p]}`).sort()
             perms = perms.join(`\n`)
@@ -42,7 +42,7 @@ module.exports = class Permissions extends Command {
             .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
             .setColor(rm.hexColor)
             
-            message.channel.send(embed)
+            message.util.send(embed)
         }
     }
 }
