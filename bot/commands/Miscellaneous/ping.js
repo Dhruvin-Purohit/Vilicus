@@ -16,7 +16,7 @@ module.exports = class Ping extends Command{
 
     async exec(message) {
 
-        const msg = await message.channel.send(`🏓Pong?`)
+        const msg = await message.util.send(`🏓Pong?`)
 
         const embed = new MessageEmbed()
         .setTitle("🏓Pong!")

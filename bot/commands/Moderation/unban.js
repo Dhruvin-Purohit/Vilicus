@@ -32,12 +32,12 @@ module.exports = class extends Command {
     async exec(message, { who, rsn }) {
         let bans = await message.guild.fetchBans()
         let ohw = bans.get(who.id)
-        if(!ohw) return message.channel.send(`${message.author}, you fool, ${who.tag} is not banned`)
+        if(!ohw) return message.util.send(`${message.author}, you fool, ${who.tag} is not banned`)
         ohw = ohw.user
         if(rsn.length > 480) rsn = rsn.slice(0, 480) + '...'
 
         await message.guild.members.unban(ohw, rsn)
 
-        return message.channel.send(`Done`)
+        return message.util.send(`Done`)
     }
 }

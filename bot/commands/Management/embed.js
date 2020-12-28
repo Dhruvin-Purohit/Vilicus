@@ -57,7 +57,7 @@ module.exports = class extends Command {
             .setFooter(`Footer`)
             let content = `${dmd.bold `Embed Generator`}\nUse options to make embeds!\nTitle: ${dmd.code `title=Title`}\nDescription: ${dmd.code `description=Description`}\nThumbnail: ${dmd.code `thumb=thumbnail_url`}\nColor: ${dmd.code `color=#00ff00`}\nImage: ${dmd.code `image=image_url`}\nFooter: ${dmd.code `title=Footer`}\n\nExample Command: ${this.handler.prefix(message)}embed titile=Title desc=Description thumb=thumbnail_url color=#00ff00 image=image_url footer=Footer\n\nExample Command Result:`
 
-            return message.channel.send({
+            return message.util.send({
                 content: content,
                 embed: embed
                 })
@@ -70,7 +70,7 @@ module.exports = class extends Command {
             if(embedImage) embed.setImage(embedImage)
             if(embedFoot) embed.setFooter(embedFoot)
 
-            return message.channel.send(embed)
+            return message.util.send(embed)
         }
     }
 }

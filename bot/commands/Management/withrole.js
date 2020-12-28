@@ -26,7 +26,7 @@ module.exports = class WithRole extends Command {
     async exec(message, { role }) {
         const member = await message.guild.members.fetch()
         let nope = member.filter(m => m.roles.cache.has(role.id))
-        if(!nope.size > 0) return message.channel.send(new MessageEmbed({description: '😂 No one actually has that role', color: role.hexColor}))
-        else return message.channel.send(new MessageEmbed({title: `List`, description: `${nope.map(m => `${dmd.bold `${m.user.tag} - `}${dmd.code `${m.id}`}`).join(`\n`)}\n\nThe above member(s) have the ${role} role`, footer: `requested by ${message.author.tag}`, color: role.hexColor}))
+        if(!nope.size > 0) return message.util.send(new MessageEmbed({description: '😂 No one actually has that role', color: role.hexColor}))
+        else return message.util.send(new MessageEmbed({title: `List`, description: `${nope.map(m => `${dmd.bold `${m.user.tag} - `}${dmd.code `${m.id}`}`).join(`\n`)}\n\nThe above member(s) have the ${role} role`, footer: `requested by ${message.author.tag}`, color: role.hexColor}))
     }
 }

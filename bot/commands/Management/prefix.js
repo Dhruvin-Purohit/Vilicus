@@ -23,11 +23,11 @@ module.exports = class extends Command {
         })
     }
     async exec(message, { newpre }) {
-        if(newpre === message.guild.db.gdb.prefix) return message.channel.send(`${message.author}, you fool, ${newpre} is already the prefix`)
+        if(newpre === message.guild.db.gdb.prefix) return message.util.send(`${message.author}, you fool, ${newpre} is already the prefix`)
 
         message.guild.db.gdb.prefix = newpre
         await message.guild.db.gdb.save()
-        message.channel.send(`The prefix for this server has been updated successfully!\nThe new prefix is ${dmd.code `${newpre}`}.`)
+        message.util.send(`The prefix for this server has been updated successfully!\nThe new prefix is ${dmd.code `${newpre}`}.`)
 
     }
 }

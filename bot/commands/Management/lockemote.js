@@ -53,8 +53,8 @@ module.exports = class LockEmote extends Command {
         .setColor(message.guild.me?.displayHexColor)
 
         const confirmation = new Promise(async resolve => { 
-            await message.channel.send(confirembed)
-            await message.channel.awaitMessages(m => m.author.id == message.author.id && ["y", "n", "yes", "no"].includes(m.content.toLowerCase()), {
+            await message.util.send(confirembed)
+            await message.util.awaitMessages(m => m.author.id == message.author.id && ["y", "n", "yes", "no"].includes(m.content.toLowerCase()), {
                 max: 1,
             })
             .then(collection => ["y", "yes"].includes(collection.first()?.cleanContent?.toLowerCase() ?? "") ? resolve(true) : resolve(false))
@@ -63,9 +63,9 @@ module.exports = class LockEmote extends Command {
 
         if (await confirmation) {
             await emoji.roles.set([role])
-            return message.channel.send(doneembed)
+            return message.util.send(doneembed)
         } else {
-            return message.channel.send(cancelledembed)
+            return message.util.send(cancelledembed)
         }
     }
 }

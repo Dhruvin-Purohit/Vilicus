@@ -30,13 +30,13 @@ module.exports = class extends Command {
     }
 
     async exec(message, { who, rsn }) {
-        if(who === message.member) return message.channel.send(`${message.author}, you cannot ban yourself`)
-        if(who.roles.highest.position >= message.member.roles.highest.position) return message.channel.send(`${message.author}, you fool, you cannot ban someone with a higher or equal role`)
-        if(!who.kickable) return message.channel.send(`I cannot ban that member.`)
+        if(who === message.member) return message.util.send(`${message.author}, you cannot ban yourself`)
+        if(who.roles.highest.position >= message.member.roles.highest.position) return message.util.send(`${message.author}, you fool, you cannot ban someone with a higher or equal role`)
+        if(!who.kickable) return message.util.send(`I cannot ban that member.`)
         if(rsn.length > 480) rsn = rsn.slice(0, 480) + '...'
 
         await who.ban({reason: rsn})
 
-        return message.channel.send(`Done`)
+        return message.util.send(`Done`)
     }
 }
