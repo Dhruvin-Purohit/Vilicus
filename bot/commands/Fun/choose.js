@@ -22,8 +22,8 @@ module.exports = class Choose extends Command {
     }
 
     async exec(message, { args }) {
-        if (!args) return message.channel.send(`Next time when you run this command, give me some options to choose from`)
-        if(fn.cleanArray(args.split(" ")).length === 1) return message.channel.send(`I guess i will just go with ${dmd.bold `${fn.cleanArray(args.split(" "))[0]}`} as there seems to be no other option`)
-        else return message.channel.send("I chose" + dmd.bold `${fn.choice(fn.cleanArray(args.split(" ")))}`)
+        if (!args) return message.util.send(`Next time when you run this command, give me some options to choose from`)
+        if(fn.cleanArray(args.split(" ")).length === 1) return message.util.send(`I guess i will just go with ${dmd.bold `${fn.cleanArray(args.split(" "))[0]}`} as there seems to be no other option`)
+        else return message.util.send("I chose" + dmd.bold `${fn.choice(fn.cleanArray(args.split(" ")))}`)
     }
 }

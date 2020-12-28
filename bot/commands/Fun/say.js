@@ -23,6 +23,6 @@ module.exports = class Say extends Command {
         })
     }
     exec(message, { what}) {
-        return message.channel.send(what, { disableMentions: 'everyone' })
+        return message.util.send(what, { disableMentions: 'everyone' })
     }
 }
