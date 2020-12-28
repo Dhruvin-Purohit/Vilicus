@@ -5,7 +5,7 @@ const { TextChannel } = require('discord.js')
 module.exports = class extends Command {
     constructor() {
         super('updates', {
-            aliases: ['updates', 'followupdates', 'announcements'],
+            aliases: ['updates', 'followupdates', 'announcements', 'news'],
             clientPermissions: ['SEND_MESSAGES', 'EMBED_LINKS', 'MANAGE_WEBHOOKS'],
             userPermissions: ['MANAGE_WEBHOOKS'],
             description: {
