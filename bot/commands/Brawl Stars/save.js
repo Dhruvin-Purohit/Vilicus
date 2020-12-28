@@ -25,12 +25,12 @@ module.exports = class extends Command {
     }
 
     async exec(message, { tag }) {
-        if(!tag) return message.channel.send(`No player tag provided`)
+        if(!tag) return message.util.send(`No player tag provided`)
         let tagrgx = /^#?[0-9A-Z]/i
-        if(!tagrgx.test(tag)) return message.channel.send(`Invalid player tag provided!`)
+        if(!tagrgx.test(tag)) return message.util.send(`Invalid player tag provided!`)
         if(tag.startsWith('#')) tag = tag.slice(1)//Big brain
-        if(message.author.db.udb.bs.includes(tag)) return message.channel.send(`That player tag is already linked to your account.`)
-        if(message.author.db.udb.bs.length >= 3) return message.channel.send(`${message.author}, You cannot save more than ${message.author.db.udb.bs.length} player tags.`)
+        if(message.author.db.udb.bs.includes(tag)) return message.util.send(`That player tag is already linked to your account.`)
+        if(message.author.db.udb.bs.length >= 3) return message.util.send(`${message.author}, You cannot save more than ${message.author.db.udb.bs.length} player tags.`)
         try {
             const res = await fetch(`https://bsproxy.royaleapi.dev/v1/players/%23${tag}`, { headers: {'Authorization': `Bearer ${this.client.bsapi}`}});
             const stats = await res.json();
@@ -38,12 +38,12 @@ module.exports = class extends Command {
 
                 message.author.db.udb.bs.push(tag)
                 await message.author.db.udb.save()
-                return message.channel.send(`${message.author}, Your Brawl Stars Account,\n${dmd.bold `${stats.name}`}(${stats.tag}) has been linked to your account successfully`)
+                return message.util.send(`${message.author}, Your Brawl Stars Account,\n${dmd.bold `${stats.name}`}(${stats.tag}) has been linked to your account successfully`)
               
             } else if (res.status === 404) {
-                return message.channel.send(`Next time when you run the command, give me an actually valid Brawl Stars player tag!`)
+                return message.util.send(`Next time when you run the command, give me an actually valid Brawl Stars player tag!`)
             } else {
-                return message.channel.send(`Something Unknown happened,\n${dmd.bold `${emojis.basic.error}Error`}:\n${stats.reason}  | ${stats.message}`)
+                return message.util.send(`Something Unknown happened,\n${dmd.bold `${emojis.basic.error}Error`}:\n${stats.reason}  | ${stats.message}`)
             }
         } catch (err) {
             this.client.emit("error", err, message, this)

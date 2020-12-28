@@ -26,17 +26,17 @@ const dmd = require('discord-md-tags')
     }
 
     async exec(message, { map }) {
-        if(!map) return message.channel.send(`You need to give me a map name smh my head`)
+        if(!map) return message.util.send(`You need to give me a map name smh my head`)
         map = map.toLowerCase()
         const thing = await fetch(`https://raw.githubusercontent.com/Vilicus-Bot/Vilicus/rewrite/assets/bs/maps/${encodeURIComponent(map)}.png`)
         .then(res => res)
         .catch((err) => this.client.emit('error', err))
 
-        if(!thing || thing.status === 404) return message.channel.send(`You need to give me a ${dmd.bold `valid`} map name smh my head`)
+        if(!thing || thing.status === 404) return message.util.send(`You need to give me a ${dmd.bold `valid`} map name smh my head`)
         const embed = new MessageEmbed()
         .setTitle(map)
         .setImage(`${thing.url}`)
         .setFooter(`Image Credits: Star List`)
-        return message.channel.send(embed)
+        return message.util.send(embed)
     }
 }
