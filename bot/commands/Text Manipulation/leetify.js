@@ -25,7 +25,7 @@ module.exports = class Leetify extends Command{
 
     async exec(message, { stuff }) {
 
-        if (!stuff) return message.channel.send(`You need to put in some actual text there in order for me to l3371fy it.`)
+        if (!stuff) return message.util.send(`You need to put in some actual text there in order for me to l3371fy it.`)
 
         function Leetify(text) {
             for(let i = 0; i < text.length; i++) {
@@ -45,7 +45,7 @@ module.exports = class Leetify extends Command{
         .setAuthor(`L337 63n3r470r`)
         .setDescription(dmd.codeblock() `${leeted}`)
 
-        return message.channel.send(embed)
+        return message.util.send(embed)
 
     }
 }

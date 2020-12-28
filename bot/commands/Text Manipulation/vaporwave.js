@@ -24,7 +24,7 @@ module.exports = class Vaporwave extends Command{
 
     async exec(message, { stuff }) {
 
-        if (!stuff) return message.channel.send(`You need to put in some actual text there in order for me to ｖ ａ ｐ ｏ ｒ ｗ ａ ｖ ｅ it.`)
+        if (!stuff) return message.util.send(`You need to put in some actual text there in order for me to ｖ ａ ｐ ｏ ｒ ｗ ａ ｖ ｅ it.`)
 
         function Vapor(text) {
             for(let i = 0; i < text.length; i++) {
@@ -43,7 +43,7 @@ module.exports = class Vaporwave extends Command{
         const embed = new MessageEmbed()
         .setDescription(`\`\`\`${vapored}\`\`\``)
 
-        return message.channel.send(embed)
+        return message.util.send(embed)
 
     }
 }

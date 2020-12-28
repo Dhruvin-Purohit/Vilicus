@@ -24,7 +24,7 @@ module.exports = class Enchant extends Command{
 
     async exec(message, { stuff }) {
 
-        if (!stuff) return message.channel.send(`You need to put in some actual text there in order for me to enchant it.`)
+        if (!stuff) return message.util.send(`You need to put in some actual text there in order for me to enchant it.`)
 
         function Enchant(text) {
             for(let i = 0; i < text.length; i++) {
@@ -39,7 +39,7 @@ module.exports = class Enchant extends Command{
         let enchanted = Enchant(stuff)
         enchanted = enchanted.join('')
 
-        return message.channel.send(`${dmd.codeblock("js") `${enchanted}`}`)
+        return message.util.send(`${dmd.codeblock("js") `${enchanted}`}`)
 
     }
 }
