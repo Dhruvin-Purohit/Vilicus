@@ -34,9 +34,9 @@ module.exports = class Eval extends Command {
             let t2 = new Date()
             let tt = t2 - t1
             if (typeof evalled !== 'string') evalled = util.inspect(evalled, { depth: 0 });
-            return message.channel.send(`*Evaluated in ${tt}ms*\n${dmd.codeblock('js') `${evalled}` }`)
+            return message.util.send(`*Evaluated in ${tt}ms*\n${dmd.codeblock('js') `${evalled}` }`)
         } catch(err) {
-            return message.channel.send(`${emojis.basic.error}**Error:**\n${dmd.codeblock('js') `${err}`}`)
+            return message.util.send(`${emojis.basic.error}**Error:**\n${dmd.codeblock('js') `${err}`}`)
         }
        
     }

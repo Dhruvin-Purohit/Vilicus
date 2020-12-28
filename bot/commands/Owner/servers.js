@@ -27,15 +27,15 @@ module.exports = class Guilds extends Command {
             const embed = new MessageEmbed()
             .setTitle('Guilds List')
             .setDescription(guilds.sort((a, b) => a.members.cache.size - b.members.cache.size).map(m => `${m} - ${dmd.bold `(${m.id})`}`))
-            return message.channel.send(embed)
+            return message.util.send(embed)
         } else {
             let paged = fn.paginate(guilds.sort((a, b) => a.members.cache.size - b.members.cache.size).map(m => `${m} - ${dmd.bold `(${m.id})`}`), page)
-            if(!paged.pages || paged.pages.length <= 0) return message.channel.send(`${message.author}, page ${dmd.code `${paged.page}`} doesn't exist you fool, ${paged.totalPages ? `${Number(paged.totalPages) === 1 ? `There is only ${dmd.code `1`} page` : `There are only ${dmd.code `${paged.totalPages}`} pages`}` : `There is no page for you`}`)
+            if(!paged.pages || paged.pages.length <= 0) return message.util.send(`${message.author}, page ${dmd.code `${paged.page}`} doesn't exist you fool, ${paged.totalPages ? `${Number(paged.totalPages) === 1 ? `There is only ${dmd.code `1`} page` : `There are only ${dmd.code `${paged.totalPages}`} pages`}` : `There is no page for you`}`)
             const embed = new MessageEmbed()
             .setTitle('Guild List')
             .setDescription(paged.pages.map(m => `${m}`).join(`\n`))
             .setFooter(`Showing page ${paged.page}/${paged.totalPages}`)
-            return message.channel.send(embed)
+            return message.util.send(embed)
         }
     }
 }

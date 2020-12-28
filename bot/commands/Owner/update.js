@@ -16,7 +16,7 @@ module.exports = class Update extends Command {
     }
     async exec(message) {
     
-        let msg = await message.channel.send(`${emojis.discord.Analytics} ${dmd.code `Stage 1.`} ${dmd.bold `Update started...`}`)
+        let msg = await message.util.send(`${emojis.discord.Analytics} ${dmd.code `Stage 1.`} ${dmd.bold `Update started...`}`)
 
         msg = await msg.edit(`${emojis.discord.Analytics} ${dmd.code `Stage 2.`} Unloading and Loading all ${dmd.code `Inhibitors`} now`)
         await this.client.InhibitorHandler.removeAll()

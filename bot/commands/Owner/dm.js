@@ -40,7 +40,7 @@ module.exports = class DM extends Command{
 
     async exec(message, { user, msg }) {
         const confirmation = new Promise(async resolve => { 
-            await message.channel.send(`Are sure you want to dm that to ${user.tag}?(\`y\`/\`n\`)`)
+            await message.util.send(`Are sure you want to dm that to ${user.tag}?(\`y\`/\`n\`)`)
             await message.channel.awaitMessages(m => m.author.id == message.author.id && ["y", "n", "yes", "no"].includes(m.content.toLowerCase()), {
                 max: 1,
                 time: 4.5e4,
@@ -52,13 +52,13 @@ module.exports = class DM extends Command{
         if (await confirmation) {
             try {
                 await message.client.users.cache.get(user.id)?.send(msg)
-                return message.channel.send("Done👍🏻")
+                return message.util.send("Done👍🏻")
             } catch {
-                return message.channel.send(`Couldn't send dm👎🏻`)
+                return message.util.send(`Couldn't send dm👎🏻`)
             }
         }
         else {
-            return message.channel.send("I was pretty sure you were going to cancel")
+            return message.util.send("I was pretty sure you were going to cancel")
         }
     }
 

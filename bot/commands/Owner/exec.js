@@ -35,23 +35,23 @@ module.exports = class Exec extends Command{
 
     async exec(message, { stuff }) {
 
-        message.channel.send(`${dmd.bold `Input:`}\n${dmd.codeblock('powershell') `${stuff}`}`)
+        message.util.send(`${dmd.bold `Input:`}\n${dmd.codeblock('powershell') `${stuff}`}`)
         exec(stuff, async (e, stdout, stderr) => {
           if (stdout.length + stderr.length > 984) {
-                message.channel.send(`Console Log Exceeds 2000 Characters...`)
+                message.util.send(`Console Log Exceeds 2000 Characters...`)
           } else {
             if (stdout) {
-                message.channel.send(`${dmd.bold `Output:`}\n${dmd.codeblock('powershell') `${stdout}`}`)
+                message.util.send(`${dmd.bold `Output:`}\n${dmd.codeblock('powershell') `${stdout}`}`)
             }
             if (stderr) {
-                message.channel.send(`${dmd.bold `Error:`}\n${dmd.codeblock('powershell') `${stderr}`}`)
+                message.util.send(`${dmd.bold `Error:`}\n${dmd.codeblock('powershell') `${stderr}`}`)
             }
             if (!stderr && !stdout) {
                 message.react(emojis.discord.CheckMark)
             }
           }
           if (e) {
-              message.channel.send(`${dmd.bold `Error:`}\n${dmd.codeblock('powershell') `${e}`}`)//diff than stderr
+              message.util.send(`${dmd.bold `Error:`}\n${dmd.codeblock('powershell') `${e}`}`)//diff than stderr
           }
           })
         }

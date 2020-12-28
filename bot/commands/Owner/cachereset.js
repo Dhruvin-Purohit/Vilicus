@@ -22,9 +22,9 @@ module.exports = class CacheReset extends Command {
     }
 
     async exec(message, { what }) {
-        if(!what) return message.channel.send(`Can't reset cache of nothing, sorry not sorry.`)
+        if(!what) return message.util.send(`Can't reset cache of nothing, sorry not sorry.`)
         const file = await require.resolve(`${what}`)
-        if(!file) return message.channel.send(`Can't reset cache of something that does not exist, sorry not sorry.`)
+        if(!file) return message.util.send(`Can't reset cache of something that does not exist, sorry not sorry.`)
         await delete require.cache[file]
         return message.react(emojis.discord.CheckMark)
     }

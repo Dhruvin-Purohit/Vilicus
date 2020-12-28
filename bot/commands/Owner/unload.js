@@ -33,7 +33,7 @@ module.exports = class Unload extends Command {
         catch(err){
             const embed = new MessageEmbed()
             .addField(`Error Unloading ${stuff.id}`, dmd.codeblock('powershell') `${err}`)
-            await message.channel.send(embed)
+            await message.util.send(embed)
         }
     }
 }

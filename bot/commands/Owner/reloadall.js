@@ -24,7 +24,7 @@ module.exports = class Reloadall extends Command {
         catch(err){
             const embed = new MessageEmbed()
             .addField(`Error Reloading Everything`, dmd.codeblock('powershell') `${err}`)
-            await message.channel.send(embed)
+            await message.util.send(embed)
         }
     }
 }

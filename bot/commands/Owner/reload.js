@@ -32,7 +32,7 @@ module.exports = class Reload extends Command {
         catch(err){
             const embed = new MessageEmbed()
             .addField(`Error Reloading ${stuff.id}`, dmd.codeblock('powershell') `${err}`)
-            await message.channel.send(embed)
+            await message.util.send(embed)
         }
     }
 }
