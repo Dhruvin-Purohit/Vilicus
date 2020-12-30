@@ -11,6 +11,7 @@ module.exports = class extends Listener {
     }
     exec(oldMessage, newMessage) {
         if(newMessage.author.bot) return
+        if(!newMessage.guild) return
         if(newMessage.guild.db.gdb.msglog) {
             if(newMessage.content != oldMessage.content) {
             let oldMessageContent = oldMessage.content

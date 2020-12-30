@@ -1,11 +1,11 @@
 const { Listener } = require('discord-akairo')
 const dmd = require('discord-md-tags')
-const config = require('../../config.json')
+const config = require('../../../config.json')
 
 module.exports = class extends Listener {
     constructor() {
         super('commandstarted', {
-            emitter: 'commandHandler',
+            emitter: 'CommandHandler',
             event: 'commandStarted'
         })
     }
@@ -15,13 +15,13 @@ module.exports = class extends Listener {
 
         const embed = this.client.util.embed()
         .setColor(this.client.basecolor)
-        .setThumbnail(message.guild ? message.gild.iconURL({
+        .setThumbnail(message.guild ? message.guild.iconURL({
             dynamic: true
         }) : message.author.displayAvatarURL({
             dynamic: true
         }))
-        .setDescription(`${dmd.bold `${message.author.tag}`}(${message.author.id}) used ${dmd.bold `${command}`}${message.guild ? `in ${message.guild.name}` : `in DMs`}`)
-        .setFooter(`${args ? args : '\u200b'}`)
+        .setDescription(`${dmd.bold `${message.author.tag}`} used ${dmd.bold `${command}`} ${message.guild ? `in ${dmd.bold `${message.guild.name}`}` : `in ${dmd.bold `DMs`}`}\n\n${dmd.bold `User ID: `}${message.author.id}\n\n${message.guild ? `${dmd.bold `Guild ID: `}${message.guild.id}` : "\u200b"}`)
+        .setFooter(`${message ? message : '\u200b'}`)
         try {
         commandlogs.send(embed)
         } catch {

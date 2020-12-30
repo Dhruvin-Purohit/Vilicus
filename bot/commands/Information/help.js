@@ -56,7 +56,7 @@ module.exports = class Help extends Command {
     } else {
         if(command.ownerOnly && !this.client.isOwner(message.author)) return message.util.send(`${message.author}, Command ${dmd.code `${command}`} doesn't exist you fool`)
         let cmd = this.handler.findCommand(command)
-        if(!cmd) return message.util.send(you_fool)
+        if(!cmd) return message.util.send(`${message.author}, Command ${dmd.code `${command}`} doesn't exist you fool`)
         else {
             let title;
             if(cmd.description.usage){
@@ -94,8 +94,10 @@ module.exports = class Help extends Command {
             if (cmd.clientPermissions) {
                 embed.addField(`${emojis.discord.Application} Bot Permissions required`, `${((cmd.clientPermissions).map((p) => dmd.code `${permissions[p]}`).join(", ").toString()) || 'None'}`, true)
                 }
-            if (cmd.prefix != prefix) {
-                embed.addField(`${emojis.discord.Reply}Override Prefix`, dmd.code `${cmd.prefix}`)
+            if(cmd.prefix) {
+                if (cmd.prefix != prefix) {
+                    embed.addField(`${emojis.discord.Reply}Override Prefix`, dmd.code `${cmd.prefix}`)
+                }
             }
         return message.util.send(embed);
         }

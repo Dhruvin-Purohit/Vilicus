@@ -8,8 +8,6 @@ module.exports = winston.createLogger(
             new winston.transports.File({ filename: 'every.log' }),
           ]
     }
-)
-
-logger.add(new winston.transports.Console({
+).add(new winston.transports.Console({
     format: winston.format.simple(),
   }));

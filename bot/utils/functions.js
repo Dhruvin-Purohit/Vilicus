@@ -194,6 +194,21 @@ class Pageinator {
     }
 }
 
+    function wait(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function shuffle(array) {
+        const arr = array.slice(0);
+        for (let i = arr.length - 1; i >= 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            const temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        return arr;
+    }
+
 module.exports = {
     paginate,
     Capitalize,
@@ -204,5 +219,7 @@ module.exports = {
     cleanTime,
     Pageinator,
     forceCapitalize,
-    drop
+    drop,
+    wait,
+    shuffle
 }

@@ -11,6 +11,7 @@ module.exports = class extends Listener {
     }
     exec(message) {
         if(message.author.bot) return
+        if(!message.guild) return
         if(message.guild.db.gdb.msglog) {
             const embed = new MessageEmbed()
             .setTitle(`Message by ${message.author.tag} in #${message.channel.name} deleted`)
