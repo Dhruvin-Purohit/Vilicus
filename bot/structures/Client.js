@@ -4,6 +4,8 @@ const bl = require('../data/blacklist.json')
 const { User } = require('discord.js')
 const logger = require('./Other/logger')
 
+const coc = require('clashofclans-events')
+
 require('./GuildDB')
 require('./Discord.js/Guild')
 
@@ -63,6 +65,17 @@ class VilicusClient extends ak.AkairoClient {
         this.basecolor = config.bot.basecolor
 
         this.blacklist = bl.id
+
+        this.cocClient = new coc({
+            tokens: [this.cocapi]
+        }, {
+            playerJoin: true,
+            playerLeft: true,
+            donationEvent: true,
+            clanEvent: true,
+            playerPromote: true,
+            playerDemote: true
+        })
 
     }
 

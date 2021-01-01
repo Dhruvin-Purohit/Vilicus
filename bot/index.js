@@ -2,14 +2,14 @@ const VilcusClient = require('./structures/Client')
 
 const client = new VilcusClient()
 
-//Top.GG Server count stuff Ignore...
-const AutoPoster = require('topgg-autoposter')
-const config = require('./config.json')
+let clantags = []
+for (guild in client.guilds.cache) {
+    if(guild.db.gdb.cocclan) clantags.push(guild.db.gdb.cocclan)
+}
+client.cocClient.init(clantags)
 
-module.exports = poster = new AutoPoster(config.botlist.top, client)
-poster.on("posted", () => {
-    console.log(`Top.gg server count posted!`)
+client.cocClient.on('donationEvent', (message) => {
+    console.log(message)
 })
-//Over
 
 client.start()

@@ -10,17 +10,14 @@
     "channels": {
         "error": "error log channel id",
         "other": "other log channel id",
-        "disconsole": "disconsole channel id"
+        "disconsole": "disconsole channel id",
+        "command": "command log cannel id (spam warning)"
     },
     "api": {
         "bs": "brawl stars api key",
         "coc": "clash of clans api key",
         "cr": "clash royale api key",
         "gh": "github api key"
-    },
-    "botlist": {
-        "top": "top.gg token",
-        "topwh": "top.gg password (not necessary atm)"
     },
     "db": {
         "guild": "guild database MongoDB atlas cluster url",

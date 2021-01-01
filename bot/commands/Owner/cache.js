@@ -6,6 +6,7 @@ module.exports = class Cache extends Command {
         super('cache', {
             aliases: ['cache'],
             typing: true,
+            channel: 'guild',
             clientPermissions: ['SEND_MESSAGES', 'ADD_REACTIONS', 'USE_EXTERNAL_EMOJIS'],
             description: {
                 content: 'Caches a given guild or the current guild...',

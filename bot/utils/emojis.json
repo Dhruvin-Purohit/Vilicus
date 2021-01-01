@@ -1,6 +1,8 @@
 {
     "basic": {
-        "error": "<:Error:785034373278728213>"
+        "error": "<:Error:785034373278728213>",
+        "check_mark": "<:check_mark:794420014954446858>",
+        "cross_mark": "<:cross_mark:794419886549106729>"
     },
     "discord": {
         "Announcement": "<:Announcement:785789349589418015>",

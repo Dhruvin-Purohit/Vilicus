@@ -4,10 +4,9 @@ module.exports = winston.createLogger(
     {
         format: winston.format.json(),
         transports: [
-            new winston.transports.File({ filename: 'error.log', level: 'error' }),
-            new winston.transports.File({ filename: 'every.log' }),
+            new winston.transports.File({ filename: 'error.log', level: 'warn' }),
+            new winston.transports.File({ filename: 'every.log', level: 'silly' }),
+            //new winston.transports.Console({ format: winston.format.colorize })
           ]
     }
-).add(new winston.transports.Console({
-    format: winston.format.simple(),
-  }));
+)
