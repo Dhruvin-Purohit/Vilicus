@@ -8,8 +8,4 @@ for (guild in client.guilds.cache) {
 }
 client.cocClient.init(clantags)
 
-client.cocClient.on('donationEvent', (message) => {
-    console.log(message)
-})
-
 client.start()

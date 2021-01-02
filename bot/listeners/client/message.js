@@ -11,7 +11,7 @@ module.exports = class extends Listener {
     exec(message) {
         if(!this.client.isBlacklisted(message.author) && !message.author.bot && message.content === `<@${this.client.user?.id}>` || message.content === `<@!${this.client.user?.id}>`) {
             try {
-                message.channel.send(dmd.bold `My prefix is \`${this.client.CommandHandler.prefix}\``)
+                message.channel.send(dmd.bold `My prefix is \`${this.client.CommandHandler.prefix(message)}\``)
             } catch {
                 //HaHaMiSsInG PeRmIsSiOnS
             }

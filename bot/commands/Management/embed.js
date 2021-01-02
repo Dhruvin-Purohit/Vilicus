@@ -59,7 +59,7 @@ module.exports = class extends Command {
             .setColor(`#00ff00`)
             //.setImage(`Random Image link here`)
             .setFooter(`Footer`)//Thumbnail: ${dmd.code `thumb=thumbnail_url`}\n//Image: ${dmd.code `image=image_url`}\n
-            let content = `${dmd.bold `Embed Generator`}\nUse options to make embeds!\nTitle: ${dmd.code `title=Title`}\nDescription: ${dmd.code `description=Description`}\nColor: ${dmd.code `color=#00ff00`}\nFooter: ${dmd.code `foot=Footer`}\n\n${dmd.bold `Tip:`}\nUse ${dmd.code `"`} at the end and start of options to allow whitespaces! (example: ${dmd.code `desc="Description with spaces"`})\n\n${dmd.bold `Example Command:`} ${dmd.codeblock `${this.handler.prefix(message)}embed titile=Title desc=Description color=#00ff00 foot=Footer`}${dmd.bold `Example Command Result:`}`
+            let content = `${dmd.bold `Embed Generator`}\nUse options to make embeds!\nTitle: ${dmd.code `title=Title`}\nDescription: ${dmd.code `description=Description`}\nColor: ${dmd.code `color=#00ff00`}\nFooter: ${dmd.code `foot=Footer`}\n\n${dmd.bold `Tip:`}\nUse ${dmd.code `"`} at the end and start of options to allow whitespaces! (Example: ${dmd.code `desc="Description with spaces"`})\n\n${dmd.bold `Example Command:`} ${dmd.codeblock `${this.handler.prefix(message)}embed titile=Title desc=Description color=#00ff00 foot=Footer`}${dmd.bold `Example Command Result:`}`
 
             return message.util.send({
                 content: content,

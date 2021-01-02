@@ -71,7 +71,7 @@ class VilicusClient extends ak.AkairoClient {
         }, {
             playerJoin: true,
             playerLeft: true,
-            donationEvent: true,
+            //donationEvent: true,//does not show what donated, so a waste for me
             clanEvent: true,
             playerPromote: true,
             playerDemote: true

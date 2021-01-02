@@ -1,5 +1,6 @@
 const { Listener } = require('discord-akairo')
 const dmd = require('discord-md-tags')
+const UserModel = require('../../../structures/Schemas/UserSchema')
 
 module.exports = class extends Listener {
     constructor() {
@@ -11,7 +12,6 @@ module.exports = class extends Listener {
 
     async exec(member) {
         let cguild = member.guild
-        let del = true
         console.log(del)
         for (let guild of this.client.guilds.cache.filter(g => g != cguild).array()) {
             if(guild.members.cache.get(member.user.id)) {
@@ -19,7 +19,10 @@ module.exports = class extends Listener {
                 break
             }
         }
-        console.log(del)
-        if(del) await member.user.db.udb.drop()
+
+        if(del) await UserModel.findOneAndDelete({
+            id: member.user.id
+        })
+
     }
 }

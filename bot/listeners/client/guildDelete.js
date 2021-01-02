@@ -3,6 +3,7 @@ const config = require('../../config.json')
 const emojis = require('../../utils/emojis.json')
 const dmd = require('discord-md-tags')
 const { MessageEmbed } = require('discord.js')
+const GuildModel = require('../../structures/Database/GuildDatabase')
 
 module.exports = class extends Listener {
     constructor() {
@@ -13,7 +14,10 @@ module.exports = class extends Listener {
     }
 
     async exec(guild) {
-        await guild.db.dropdb()
+
+        await GuildModel.findOneAndDelete({
+            id: guild.id
+        })
 
         const embed = new MessageEmbed()
         .setTitle(`${emojis.other.leave} Left ${guild.name}`)
