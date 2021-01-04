@@ -7,10 +7,11 @@ const logger = require('./Other/logger')
 const coc = require('clashofclans-events')
 
 require('./GuildDB')
-require('./Discord.js/Guild')
 
 require('./UserDB')
-require('./Discord.js/User')
+
+const UserModel = require('./Schemas/UserSchema')
+const GuildModel = require('./Schemas/GuildSchema')
 
 class VilicusClient extends ak.AkairoClient {
     constructor(Config) {
@@ -22,7 +23,11 @@ class VilicusClient extends ak.AkairoClient {
         })
         this.CommandHandler = new ak.CommandHandler(this, {
             directory: './commands',
-            prefix: message => message.guild ? message.guild.db.gdb.prefix : config.bot.prefix,
+            prefix: async message => message.guild ? await GuildModel.findOne({
+                id:message.guild.id
+            }) || new GuildModel({
+                id: message.guild.id
+            }) : config.bot.prefix,
             allowMention: true,
             blockBots: true,
             blockClient: true,

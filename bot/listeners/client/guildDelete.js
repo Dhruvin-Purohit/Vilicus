@@ -3,7 +3,7 @@ const config = require('../../config.json')
 const emojis = require('../../utils/emojis.json')
 const dmd = require('discord-md-tags')
 const { MessageEmbed } = require('discord.js')
-const GuildModel = require('../../structures/Database/GuildDatabase')
+const GuildModel = require('../../structures/Schemas/GuildSchema')
 
 module.exports = class extends Listener {
     constructor() {

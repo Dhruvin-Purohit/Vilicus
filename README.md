@@ -5,13 +5,7 @@
 ### Vilicus is a preeminent discord bot with a vast amount of features.
 
 ### Features:
-* Text Manipulation (`Leetify`, `Emojify`, `Vaporwave`, `Clapify` etc.)
-* Emoji Role Management (`lockemote`, `unlockemote`) (Lock emotes to specific roles so that not everyone is able to use them.)
-* Indeed useful commands for management in general (`withoutroles`, `withrole`,`withoutrole`, etc.)
-* View Permissions (of a user or role) (`perms`)
-* Fun commands (`choose`, `flip`, `draw`, `roll`)
-* basic moderation commands (`lock`, `unlock`, `serverlockdown`, `ban`, `unban`, `kick`, etc.)
-* anti ghost ping
+* Too many to list here
 
 ### Coming Up:
 * Database support to hold custom prefixes and logging
@@ -29,6 +23,9 @@ If you want to contribute to Vilicus, You can [Fork this Repository](https://git
 
 ## Self Hosting
 [View this file for info on Self Hosting](SelfHosting.md "View file")
+
+## Terms of Service
+[View this file to read Vilicus Terms of Service](TermsOfService.md)
 
 ## License
 [This Repository is Licensed under the MIT License](LICENSE "View License")
