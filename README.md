@@ -1,3 +1,15 @@
+# This project has been deprecated and no further support or maintaining the code will be provided
+## Thank you to all those who contributed
+
+# Contibutors
+
+The project couldn't have been what it is without these people!
+
+@dhruvin-purohit - Founder
+@BronzW - Developer
+@Anogh297 - Developer
+@Radarwastaken - Developer
+
 # **Vilicus Bot** Official GitHub repository
 
 ## About Vilicus Bot
