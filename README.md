@@ -5,10 +5,14 @@
 
 The project couldn't have been what it is without these people!
 
-@dhruvin-purohit - Founder
-@BronzW - Developer
-@Anogh297 - Developer
-@Radarwastaken - Developer
+[@dhruvin-purohit](https://github.com/dhruvin-purohit) - Founder
+
+[@BronzW](https://github.com/BronzW) - Developer
+
+[@Anogh297](https://github.com/Anogh297) - Developer
+
+[@Radarwastaken](https://github.com/Radarwastaken) - Developer
+
 
 # **Vilicus Bot** Official GitHub repository
 
